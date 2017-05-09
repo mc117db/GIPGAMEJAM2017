@@ -1,0 +1,17 @@
+GameObject Comments
+By dylanyates
+
+Thank you for purchasing GameObject Comments!
+
+How to use:
+	- Add the GameObject Comments script to any GameObject that you have.
+	- Type your comments.  That's it!
+	
+Features:
+	- Easy to use extension for adding comments about GameObjects right in the inspector 
+	- Rich text (bold, italics, colors and sizes)
+	- Convenient buttons for adding rich text tags
+	- Comments are always the first component (under Transform)
+	
+Contact:
+	Email me at dylanyates92@gmail.com for support.
