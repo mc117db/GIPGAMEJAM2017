@@ -6,16 +6,16 @@ public class EnemySpawnerManager : MonoBehaviour {
 
 	[System.Serializable]
 	private class MonsterGroup {
-		[SerializeField]public GameObject monsterType;
-		[SerializeField]public int monsterAmount;
-		[SerializeField]public float spawnTimer;
-		[SerializeField]public bool isRandom;
-		[SerializeField]public GameObject[] spawnpoints;
+		public GameObject monsterType;
+		public int monsterAmount;
+		public float spawnTimer;
+		public bool isRandom;
+		public GameObject[] spawnpoints;
 	}
 
 	[System.Serializable]
 	private class MonsterWave {
-		[SerializeField]public MonsterGroup[] monsterGroupList;
+		public MonsterGroup[] monsterGroupList;
 	}
 
 
