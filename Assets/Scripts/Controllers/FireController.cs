@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AffinityMode {Hard,Soft}
+
 public class FireController : MonoBehaviour {
 
     public float RateOfFire;
@@ -15,6 +15,8 @@ public class FireController : MonoBehaviour {
     // In the future, can refactor this system into a Dictionary of <Key,FireBehaviour>
     public FireBehaviour HARDBEHAVIOUR;
     public FireBehaviour SOFTBEHAVIOUR;
+    public delegate void OnEvent();
+    public static event OnEvent FireEvent;
 	
 	// Update is called once per frame
 	void Update () {
@@ -47,6 +49,9 @@ public class FireController : MonoBehaviour {
                 }
                 break;
         }
-
+        if (FireEvent != null)
+        {
+            FireEvent();
+        }
     }
 }
