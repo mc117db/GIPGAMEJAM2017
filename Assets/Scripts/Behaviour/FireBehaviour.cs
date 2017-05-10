@@ -2,51 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBehaviour {
+public abstract class FireBehaviour:MonoBehaviour {
     public GameObject bulletPrefab;
-    public void FireBasedOnAffinity(int affinityPower)
+    public static int DefaultDamage = 3;
+    public static int DefaultSpeed = 3;
+    public int LevelOneDamage;
+    public float LevelOneSpeed;
+    public int LevelTwoDamage;
+    public float LevelTwoSpeed;
+
+    public void FireBasedOnAffinity(int affinityPower,Vector2 aimDirection)
     {
         switch (affinityPower)
         {
+            case 0:
+                FireDefault(aimDirection);
+                    break;
             case 1:
-                FireLevelOne();
+                FireLevelOne(aimDirection);
                 break;
             case 2:
-                FireLevelTwo();
-                break;
-            case 3:
-                FireLevelThree();
-                break;
-            case 4:
-                FireLevelFour();
-                break;
-            case 5:
-                FireLevelFive();
-                break;
-            default:
+                FireLevelTwo(aimDirection);
                 break;
         }
     }
     #region Firing Implementations
-    protected virtual void FireLevelOne()
+    void FireDefault (Vector2 aimDirection)
     {
-
+        Vector2 fireVectorOne = Vector2.zero;
+        Vector2 fireVectorTwo = Vector2.zero;
+        // --------------- Calculation Fire Vectors ----------------------- //
+        fireVectorOne = Vector2Helper.Rotate(aimDirection, 2.5f);
+        fireVectorTwo = Vector2Helper.Rotate(aimDirection, -2.5f);
+        // ---------------- Spawn Bullets -------------------------------- //
+        SpawnBullet(fireVectorOne, DefaultSpeed, DefaultDamage);
+        SpawnBullet(fireVectorTwo, DefaultSpeed, DefaultDamage);
+        SpawnBullet(aimDirection, DefaultSpeed, DefaultDamage);
     }
-    protected virtual void FireLevelTwo()
+    protected virtual void FireLevelOne(Vector2 aimDirection)
     {
-
+        Debug.Log("Fire level 1, you probably forget to set your child function marked as override");
     }
-    protected virtual void FireLevelThree()
+    protected virtual void FireLevelTwo(Vector2 aimDirection)
     {
-
+        Debug.Log("Fire level 2, you probably forget to set your child function marked as override");
     }
-    protected virtual void FireLevelFour()
+    protected void SpawnBullet(Vector2 fireDir,float spd,int dmg)
     {
-
-    }
-    protected virtual void FireLevelFive()
-    {
-
+        GameObject bulletOne = GameObjectUtil.Instantiate(bulletPrefab, transform.position);
+        bulletOne.GetComponent<BulletBehaviour>().Initialize(fireDir, spd, dmg);
     }
     #endregion
 }

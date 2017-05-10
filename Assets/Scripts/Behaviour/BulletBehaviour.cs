@@ -9,6 +9,7 @@ public class BulletBehaviour : MonoBehaviour, IRecycle {
 
     Vector2 bulletVelocity;
     float speed;
+    int damage;
     Rigidbody2D rigidbodyComponent;
 	// Update is called once per frame
     public void Initialize(Vector2 vel,float spd)
@@ -18,7 +19,13 @@ public class BulletBehaviour : MonoBehaviour, IRecycle {
         speed = spd;
         rigidbodyComponent.velocity = bulletVelocity * speed;
     }
-	void Update () {
+    public void Initialize(Vector2 vel, float spd,int dmg)
+    {
+        Initialize(vel, spd);
+        damage = dmg;
+    }
+
+    void Update () {
         if (!CheckIfOffScreen())
         {
             GameObjectUtil.Destroy(gameObject);
@@ -44,13 +51,17 @@ public class BulletBehaviour : MonoBehaviour, IRecycle {
     // Object pooler interface implementations
     public void Restart()
     {
-        bulletVelocity = Vector2.zero;
-        speed = 0;
+        transform.localScale = Vector3.one;
     }
 
     public void Shutdown()
     {
+        Reset();
+    }
+    private void Reset()
+    {
         bulletVelocity = Vector2.zero;
         speed = 0;
+        transform.localScale = Vector3.zero;
     }
 }
