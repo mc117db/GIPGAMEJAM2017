@@ -2,51 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBehaviour {
+public abstract class FireBehaviour:MonoBehaviour {
     public GameObject bulletPrefab;
-    public void FireBasedOnAffinity(int affinityPower)
+    public int LevelOneDamage;
+    public float LevelOneSpeed;
+    public int LevelTwoDamage;
+    public float LevelTwoSpeed;
+
+    public void FireBasedOnAffinity(int affinityPower,Vector2 aimDirection)
     {
         switch (affinityPower)
         {
             case 1:
-                FireLevelOne();
+                FireLevelOne(aimDirection);
                 break;
             case 2:
-                FireLevelTwo();
-                break;
-            case 3:
-                FireLevelThree();
-                break;
-            case 4:
-                FireLevelFour();
-                break;
-            case 5:
-                FireLevelFive();
-                break;
-            default:
+                FireLevelTwo(aimDirection);
                 break;
         }
     }
     #region Firing Implementations
-    protected virtual void FireLevelOne()
+    protected virtual void FireLevelOne(Vector2 aimDirection)
     {
-
+        Debug.Log("Fire level 1, you probably forget to set your child function marked as override");
     }
-    protected virtual void FireLevelTwo()
+    protected virtual void FireLevelTwo(Vector2 aimDirection)
     {
-
+        Debug.Log("Fire level 2, you probably forget to set your child function marked as override");
     }
-    protected virtual void FireLevelThree()
+    protected void SpawnBullet(Vector2 fireDir,float spd,int dmg)
     {
-
-    }
-    protected virtual void FireLevelFour()
-    {
-
-    }
-    protected virtual void FireLevelFive()
-    {
-
+        GameObject bulletOne = GameObjectUtil.Instantiate(bulletPrefab, transform.position);
+        bulletOne.GetComponent<BulletBehaviour>().Initialize(fireDir, spd, dmg);
     }
     #endregion
 }
