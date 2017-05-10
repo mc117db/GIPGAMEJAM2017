@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class IntroSequence : MonoBehaviour {
+public class IntroSequence : MonoBehaviour
+{
 
     [SerializeField]
     public Sprite panel1;
@@ -15,15 +17,17 @@ public class IntroSequence : MonoBehaviour {
     private Sprite[] panels;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         currPanel = 0;
         panels = new Sprite[3] { panel1, panel2, panel3 };
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
 
-	}
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     void OnMouseDown()
     {
@@ -35,7 +39,14 @@ public class IntroSequence : MonoBehaviour {
 
     public void goToNextPanel()
     {
-        GetComponent<SpriteRenderer>().sprite = panels[currPanel];
-        currPanel += 1;
+        if (currPanel >= panels.Length)
+        {
+            SceneManager.LoadScene("Main");
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = panels[currPanel];
+            currPanel += 1;
+        }
     }
 }
