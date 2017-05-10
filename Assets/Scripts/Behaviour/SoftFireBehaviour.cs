@@ -14,15 +14,15 @@ public sealed class SoftFireBehaviour : FireBehaviour {
 
         // --------------- Calculation Fire Vectors ----------------------- //
         fireVectorOne = Vector2Helper.Rotate(aimDirection, 10);
-        fireVectorTwo = Vector2Helper.Rotate(aimDirection, 5);
-        fireVectorThree = Vector2Helper.Rotate(aimDirection, -5);
+        fireVectorTwo = Vector2Helper.Rotate(aimDirection, 2.5f);
+        fireVectorThree = Vector2Helper.Rotate(aimDirection, -2.5f);
         fireVectorFour = Vector2Helper.Rotate(aimDirection, -10);
 
         // ---------------- Spawn Bullets -------------------------------- //
         SpawnBullet(fireVectorOne, LevelOneSpeed, LevelOneDamage);
         SpawnBullet(fireVectorTwo, LevelOneSpeed, LevelOneDamage);
-        SpawnBullet(fireVectorThree, LevelTwoSpeed, LevelTwoDamage);
-        SpawnBullet(fireVectorFour, LevelTwoSpeed, LevelTwoDamage);
+        SpawnBullet(fireVectorThree, LevelOneSpeed, LevelOneDamage);
+        SpawnBullet(fireVectorFour, LevelOneSpeed, LevelOneDamage);
     }
     protected override void FireLevelTwo(Vector2 aimDirection)
     {

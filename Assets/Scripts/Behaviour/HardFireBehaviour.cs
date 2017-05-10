@@ -10,8 +10,8 @@ public sealed class HardFireBehaviour : FireBehaviour {
         Vector2 fireVectorOne = Vector2.zero;
         Vector2 fireVectorTwo = Vector2.zero;
         // --------------- Calculation Fire Vectors ----------------------- //
-        fireVectorOne = Vector2Helper.Rotate(aimDirection, 20);
-        fireVectorTwo = Vector2Helper.Rotate(aimDirection, -20);
+        fireVectorOne = Vector2Helper.Rotate(aimDirection, 2.5f);
+        fireVectorTwo = Vector2Helper.Rotate(aimDirection, -2.5f);
         // ---------------- Spawn Bullets -------------------------------- //
         SpawnBullet(fireVectorOne, LevelOneSpeed, LevelOneDamage);
         SpawnBullet(fireVectorTwo, LevelOneSpeed, LevelOneDamage);

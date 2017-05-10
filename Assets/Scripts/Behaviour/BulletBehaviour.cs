@@ -51,13 +51,17 @@ public class BulletBehaviour : MonoBehaviour, IRecycle {
     // Object pooler interface implementations
     public void Restart()
     {
-        bulletVelocity = Vector2.zero;
-        speed = 0;
+        Reset();
     }
 
     public void Shutdown()
     {
+        Reset();
+    }
+    private void Reset()
+    {
         bulletVelocity = Vector2.zero;
         speed = 0;
+        transform.localScale = Vector3.zero;
     }
 }
