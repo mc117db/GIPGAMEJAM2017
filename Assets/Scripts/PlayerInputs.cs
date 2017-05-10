@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInputs : MonoBehaviour {
 
-	[HideInInspector]public bool canMove;
+	[HideInInspector]public static bool canMove;
 
 	[HideInInspector]public static bool upButtonDown;
 	[HideInInspector]public static bool downButtonDown;
@@ -13,6 +13,7 @@ public class PlayerInputs : MonoBehaviour {
 	[HideInInspector]public static bool spaceButtonPressed;
 	[HideInInspector]public static bool leftMouseDown;
 	[HideInInspector]public static bool rightMouseDown;
+	[HideInInspector]public static Vector2 mousePos;
 
 	private bool prevLeftDown = false;
 	private bool prevRightDown = false;
@@ -28,6 +29,7 @@ public class PlayerInputs : MonoBehaviour {
 			leftButtonDown = Input.GetKey (KeyCode.A);
 			rightButtonDown = Input.GetKey (KeyCode.D);
 			spaceButtonPressed = Input.GetKeyDown (KeyCode.Space);
+			mousePos = Input.mousePosition;
 			checkMouseButton ();
 		}
 	}

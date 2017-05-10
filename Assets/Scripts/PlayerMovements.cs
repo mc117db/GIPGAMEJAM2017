@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(Rigidbody2D)]
-[RequireComponent(PlayerInputs)]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(PlayerInputs))]
 public class PlayerMovements : MonoBehaviour {
 
-	[SerializeField][Range(0f, 200f)]private float movementSpeed = 50f;
+	[SerializeField][Range(0f, 200f)]private float movementPower = 50f;
 	[SerializeField][Range(0f, 10f)]private float maxSpeed = 2f;
-	[SerializeField]private float stoppingDamp = 5f;
+	[SerializeField][Range(0f, 100f)]private float stoppingDamp = 5f;
+
+	[Space(10)]
+	[SerializeField]private float minX = -7.8f;
+	[SerializeField]private float maxX = 7.8f;
+	[SerializeField]private float minY = -5f;
+	[SerializeField]private float maxY = 5f;
 
 	private readonly float speedDamp = 0.5f;
 	private Rigidbody2D rbody;
@@ -27,17 +33,20 @@ public class PlayerMovements : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+		transform.position = new Vector2 (Mathf.Clamp(transform.position.x, minX, maxX),
+			Mathf.Clamp(transform.position.y, minY, maxY));
+		print (transform.position);
 		if (PlayerInputs.leftButtonDown) {
-			rbody.AddForce (new Vector2(-movementSpeed, 0));
+			rbody.AddForce (new Vector2(-movementPower, 0));
 		}
 		if (PlayerInputs.rightButtonDown) {
-			rbody.AddForce (new Vector2(movementSpeed, 0));
+			rbody.AddForce (new Vector2(movementPower, 0));
 		}
 		if (PlayerInputs.upButtonDown) {
-			rbody.AddForce (new Vector2(0, movementSpeed));
+			rbody.AddForce (new Vector2(0, movementPower));
 		}
 		if (PlayerInputs.downButtonDown) {
-			rbody.AddForce (new Vector2(0, -movementSpeed));
+			rbody.AddForce (new Vector2(0, -movementPower));
 		}
 
 		limitMovementSpeed ();
