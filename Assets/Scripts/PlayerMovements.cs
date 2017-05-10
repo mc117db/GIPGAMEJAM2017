@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(Rigidbody2D)]
+[RequireComponent(PlayerInputs)]
 public class PlayerMovements : MonoBehaviour {
 
 	[SerializeField][Range(0f, 200f)]private float movementSpeed = 50f;
