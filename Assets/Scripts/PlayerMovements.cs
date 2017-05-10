@@ -35,7 +35,6 @@ public class PlayerMovements : MonoBehaviour {
 	void FixedUpdate () {
 		transform.position = new Vector2 (Mathf.Clamp(transform.position.x, minX, maxX),
 			Mathf.Clamp(transform.position.y, minY, maxY));
-		print (transform.position);
 		if (PlayerInputs.leftButtonDown) {
 			rbody.AddForce (new Vector2(-movementPower, 0));
 		}

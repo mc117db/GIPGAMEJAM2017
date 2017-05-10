@@ -2,15 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class PlayerAimLine : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	private LineRenderer lineRenderer;
+	private readonly string enemyLayerString = "EnemyLayer";
+	private readonly float maxDistance = 50f;
+	private int hitLayer;
+
+	void Start() {
+		lineRenderer = GetComponent<LineRenderer> ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	void Update() {
+		RaycastHit hit;
+		hitLayer = LayerMask.GetMask (enemyLayerString);
+		if (Physics.Raycast (transform.position, transform.right, out hit, maxDistance, hitLayer)) {
+			lineRenderer.SetPosition (0, transform.position);
+			lineRenderer.SetPosition (1, hit.point);
+		} else {
+			lineRenderer.SetPosition (0, transform.position);
+			lineRenderer.SetPosition (1, transform.position + transform.right *  maxDistance);
+		}
 	}
 }
