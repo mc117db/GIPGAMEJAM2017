@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyMovements : MonoBehaviour {
 
-	public float moveSpeedMin = 0.5f;
-	public float moveSpeedMax = 1f;
-	public float turnDelayMin = 0.5f;
-	public float turnDelayMax = 0.9f;
-	public float sizeMin = 0.8f;
-	public float sizeMax = 1.3f;
+	[Range(0f, 5f)]public float moveSpeedMin = 0.5f;
+	[Range(0f, 5f)]public float moveSpeedMax = 1f;
+	[Range(0f, 5f)]public float turnDelayMin = 0.5f;
+	[Range(0f, 5f)]public float turnDelayMax = 0.9f;
+	[Range(0f, 5f)]public float sizeMin = 0.8f;
+	[Range(0f, 5f)]public float sizeMax = 1.3f;
 
 	private GameObject player;
 	private readonly string playerTagName = "Player";
