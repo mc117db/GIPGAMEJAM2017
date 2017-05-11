@@ -25,7 +25,9 @@ GameObject:
   - component: {fileID: 114908811677666576}
   - component: {fileID: 82462079582409810}
   - component: {fileID: 114662168777590006}
-  m_Layer: 0
+  - component: {fileID: 114179281864042508}
+  - component: {fileID: 114714690684622750}
+  m_Layer: 10
   m_Name: EnemyNormal
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -39,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654342657976748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.295, y: 0.32, z: 0}
+  m_LocalPosition: {x: 3.19, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,7 +59,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -170,6 +172,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114179281864042508
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654342657976748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69597248e44f7423788f75a997e0117c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
 --- !u!114 &114662168777590006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,6 +196,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: []
+--- !u!114 &114714690684622750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654342657976748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c36e15ba3cdd154bb175b367d5c172e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114908811677666576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -193,10 +218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f2e9aa33cdc1149ab3c6e37e6c7578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeedMin: 0.5
-  moveSpeedMax: 1
-  turnDelayMin: 0.2
-  turnDelayMax: 1
+  moveSpeedMin: 2.43
+  moveSpeedMax: 5
+  turnDelayMin: 5
+  turnDelayMax: 5
   sizeMin: 0.8
   sizeMax: 1.3
 --- !u!212 &212004626208424970

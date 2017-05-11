@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 public class FireController : MonoBehaviour {
-
+	public bool canShoot;
     public float RateOfFire;
     float elaspedTime;
     public Vector2 aimDirectionTEST;
@@ -41,14 +41,16 @@ public class FireController : MonoBehaviour {
     }
 	void Update () {
         #region Countdown RoF
-        if (elaspedTime < RateOfFire)
-        {
-            elaspedTime += Time.deltaTime;
-        }
-        else
-        {
-            Fire();
-            elaspedTime = 0;
+		if (canShoot) {
+        	if (elaspedTime < RateOfFire)
+        	{
+        	    elaspedTime += Time.deltaTime;
+        	}
+        	else
+        	{
+        	    Fire();
+        	    elaspedTime = 0;
+        	}
         } 
         #endregion
     }
