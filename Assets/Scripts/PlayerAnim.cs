@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAnim : MonoBehaviour {
 
 	private Animator anim;
-	private bool isSoggy = false;
+	public bool isSoggy = false;
 
 	/*
 	public bool IsSoggy {

@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour {
     void Start () {
         gameStarted = false;
 		enemySpawnerManager = GetComponent<EnemySpawnerManager> ();
-		EnemyCharacter.EnemyDeathEvent += decreaseEnemy;
+		EnemyCharacter.EnemyRemovalEvent += decreaseEnemy;
 	}
 
 	void Update () {

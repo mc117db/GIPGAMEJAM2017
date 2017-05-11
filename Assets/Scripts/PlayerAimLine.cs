@@ -9,7 +9,7 @@ public class PlayerAimLine : MonoBehaviour {
 	private readonly string enemyLayerString = "Enemy";
 	private readonly float maxDistance = 50f;
 	private int hitLayer;
-	private bool isSoggy;
+	public bool isSoggy;
 
 	/*
 	public bool IsSoggy {

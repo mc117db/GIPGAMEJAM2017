@@ -45,10 +45,16 @@ public class FireController : MonoBehaviour,IToggleFire,IAddAmmo {
             if (currentAmmo <= 0)
             {
                 canShoot = false;
+				transform.parent.GetComponent<PlayerAnim> ().isSoggy = false;
+				transform.parent.GetComponent<PlayerAimLine> ().isSoggy = false;
+				transform.parent.GetComponent<PlayerMovements> ().isSoggy = false;
             }
             else
             {
                 canShoot = true;
+				transform.parent.GetComponent<PlayerAnim> ().isSoggy = true;
+				transform.parent.GetComponent<PlayerAimLine> ().isSoggy = true;
+				transform.parent.GetComponent<PlayerMovements> ().isSoggy = true;
             }
         }
     }
