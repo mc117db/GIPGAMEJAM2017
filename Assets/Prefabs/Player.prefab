@@ -20,17 +20,17 @@ GameObject:
   m_Component:
   - component: {fileID: 4034453719474560}
   - component: {fileID: 212663620177493308}
-  - component: {fileID: 50771483362511098}
   - component: {fileID: 114452923100789118}
   - component: {fileID: 114169317159788182}
   - component: {fileID: 114526293525800306}
   - component: {fileID: 114840065473725676}
-  - component: {fileID: 120365707803087166}
+  - component: {fileID: 114799931741688630}
   - component: {fileID: 114181843812031094}
   - component: {fileID: 82156176523743594}
-  - component: {fileID: 114799931741688630}
+  - component: {fileID: 50771483362511098}
+  - component: {fileID: 120365707803087166}
   m_Layer: 0
-  m_Name: PlayerPlaceHolder
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93483640396e8e54daa320bfb882a7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDebugging: 0
 --- !u!114 &114526293525800306
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -18,6 +18,9 @@ public class PlayerInputs : MonoBehaviour {
 	private bool prevLeftDown = false;
 	private bool prevRightDown = false;
 
+	[SerializeField]
+	private bool isDebugging = false;
+
 	void Start() {
 		canMove = true;
 	}
@@ -31,6 +34,12 @@ public class PlayerInputs : MonoBehaviour {
 			spaceButtonPressed = Input.GetKeyDown (KeyCode.Space);
 			mousePos = Input.mousePosition;
 			checkMouseButton ();
+
+			// debugging purposes
+			if (isDebugging) {
+				print ("left mouse down: " + leftMouseDown);
+				print ("right mouse down: " + rightMouseDown);
+			}
 		}
 	}
 
