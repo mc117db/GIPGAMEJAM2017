@@ -8,11 +8,38 @@ public class GameManager : MonoBehaviour {
     public bool gameStarted { get; private set; }
 	public int enemyLeftInCurrentWave;
 
-	private readonly float waveStartDelay = 6f;
+	/*
+ 	public bool GameStarted {
+		get {
+			return gameStarted;
+		}
+		set {
+			if (gameStarted && enemyLeftInCurrentWave <= 0) {
+				startNextWave ();
+			}
+			gameStarted = value;
+		}
+	}
+
+	public int EnemyLeftInCurrentWave {
+		get {
+			return enemyLeftInCurrentWave;
+		}
+		set {
+			if (gameStarted && enemyLeftInCurrentWave <= 0) {
+				startNextWave ();
+			}
+			enemyLeftInCurrentWave = value;
+		}
+	}
+	*/
+
+	private readonly float waveStartDelay = 4.5f;
+	private readonly float extraDelay = 2f;
 	private readonly string enemyTagString = "Enemy";
 	private readonly string playerTagString = "Player";
 	private EnemySpawnerManager enemySpawnerManager;
-	private bool isGameWon = false;
+
 	[SerializeField]
 	private GameObject countdownPrefab;
 
@@ -24,25 +51,20 @@ public class GameManager : MonoBehaviour {
     void Start () {
         gameStarted = false;
 		enemySpawnerManager = GetComponent<EnemySpawnerManager> ();
+		EnemyCharacter.EnemyDeathEvent += decreaseEnemy;
 	}
 
 	void Update () {
 		// for debugging========================================================================
-		if(Input.GetKeyDown(KeyCode.P)) {
+		if(Input.GetKeyDown(KeyCode.P)) 
 			gameStarted = true;
-		}
-		if(Input.GetKeyDown(KeyCode.O)) {
-			resetEnemyNumber ();
-		}
+		if(Input.GetKeyDown(KeyCode.O)) 
+			enemyLeftInCurrentWave = 0;
 		// =====================================================================================
-		if (enemySpawnerManager.nextWaveIndex == enemySpawnerManager.monsterWaveList.Length - 1
-			&& enemyLeftInCurrentWave <= 0 && !isGameWon) {
-			isGameWon = true;
-			StartCoroutine (gameWonEffects());
-		}
 
-		if (gameStarted && !isGameWon && isNextWaveReady()) {
+		if (gameStarted && enemyLeftInCurrentWave <= 0) {
 			startNextWave ();
+			print ("call once");
 		}
 	}
 
@@ -51,25 +73,11 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine (nextWaveEffects ());
 	}
 
-	private bool isNextWaveReady() {
-		if (enemyLeftInCurrentWave <= 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 	IEnumerator nextWaveEffects() {
+		yield return new WaitForSeconds (extraDelay);
 		Instantiate (countdownPrefab, transform.position, Quaternion.identity);
 		yield return new WaitForSeconds(waveStartDelay);
 		enemySpawnerManager.spawnNextWave ();
-	}
-
-	IEnumerator gameWonEffects() {
-		stopPlayerMovements ();
-		stopAllEnemiesMovements ();
-		yield return new WaitForSeconds (2f);
-		// yan ling code here
 	}
 
 	private void stopPlayerMovements() {
@@ -92,11 +100,18 @@ public class GameManager : MonoBehaviour {
         Application.Quit();
     }
 
-
-
-
-	// for debugging ====================================================================================
-	public void resetEnemyNumber() {
-		enemyLeftInCurrentWave = 0;
+	void decreaseEnemy () {
+		enemyLeftInCurrentWave--;
+		print ("decreased! now left " + enemyLeftInCurrentWave);
 	}
+
+	/*
+	IEnumerator gameWonEffects() {
+		stopPlayerMovements ();
+		stopAllEnemiesMovements ();
+		yield return new WaitForSeconds (2f);
+		// yan ling code here
+	}
+	*/
+
 }
