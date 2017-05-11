@@ -12,31 +12,36 @@ public class EnemyMovements : MonoBehaviour {
 	[Range(0f, 5f)]public float sizeMin = 0.8f;
 	[Range(0f, 5f)]public float sizeMax = 1.3f;
 
-	private GameObject player;
+	protected GameObject player;
 	private readonly string playerTagName = "Player";
 	private readonly float speedDamp = 0.5f;
-	private readonly float movePower = 100f;
-	private float moveSpeed;
-	private float turnDelay;
+	protected readonly float movePower = 100f;
+	protected float moveSpeed;
+	protected float turnDelay;
 	private float size;
 
-	private bool canMove;
-	private Rigidbody2D rbody;
+	protected bool canMove;
+	protected Rigidbody2D rbody;
 	private float targetRotation;
 
-	void Start() {
+	void Awake() {
+		rbody = GetComponent<Rigidbody2D> ();
 		player = GameObject.FindGameObjectWithTag (playerTagName);
+
+	}
+
+	void Start() {
 		moveSpeed = Random.Range (moveSpeedMin, moveSpeedMax);
 		turnDelay = Random.Range (turnDelayMin, turnDelayMax);
 		size = Random.Range (moveSpeedMin, sizeMax);
 		canMove = true;
-		rbody = GetComponent<Rigidbody2D> ();
+		//rbody = GetComponent<Rigidbody2D> ();
 	}
 
 	void FixedUpdate() {
 		limitMovement ();
+		turnToPlayer ();
 		if (canMove) {
-			turnToPlayer ();
 			moveToPlayer ();
 		}
 	}

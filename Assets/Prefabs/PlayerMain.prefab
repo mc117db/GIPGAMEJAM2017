@@ -212,9 +212,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a059b1af71b55f84c9e0d04c5e4f0a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smallFishMaxSpeed: 2
+  bigFishMaxSpeed: 1
   movementPower: 50
-  maxSpeed: 2
   stoppingDamp: 5
+  isSoggy: 0
   minX: -7.8
   maxX: 7.8
   minY: -5
@@ -463,7 +465,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1cfd6f7384e3ab8489885abb5f25b274, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 45d20d1787dffd240a95fb30ddaec642, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -503,7 +505,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

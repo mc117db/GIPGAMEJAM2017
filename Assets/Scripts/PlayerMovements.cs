@@ -6,11 +6,13 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerInputs))]
 public class PlayerMovements : MonoBehaviour {
 
+	[SerializeField][Range(0f, 10f)]private float smallFishMaxSpeed = 2f;
+	[SerializeField][Range(0f, 10f)]private float bigFishMaxSpeed = 1f;
 	[SerializeField][Range(0f, 200f)]private float movementPower = 50f;
-	[SerializeField][Range(0f, 10f)]private float maxSpeed = 2f;
 	[SerializeField][Range(0f, 100f)]private float stoppingDamp = 5f;
+	[Space(15)]
 
-	[Space(10)]
+	public bool isSoggy = false;
 	[SerializeField]private float minX = -7.8f;
 	[SerializeField]private float maxX = 7.8f;
 	[SerializeField]private float minY = -5f;
@@ -52,6 +54,7 @@ public class PlayerMovements : MonoBehaviour {
 	}
 
 	void limitMovementSpeed() {
+		float maxSpeed = isSoggy ? bigFishMaxSpeed : smallFishMaxSpeed;
 		if (rbody.velocity.magnitude > maxSpeed) {
 			Vector2 newSpeed = rbody.velocity.normalized * maxSpeed;
 			rbody.velocity = Vector2.Lerp (rbody.velocity, newSpeed, speedDamp);
