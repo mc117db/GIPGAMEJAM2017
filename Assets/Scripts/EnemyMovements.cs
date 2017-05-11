@@ -5,38 +5,43 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyMovements : MonoBehaviour {
 
-	[Range(0f, 5f)]public float moveSpeedMin = 0.5f;
-	[Range(0f, 5f)]public float moveSpeedMax = 1f;
-	[Range(0f, 5f)]public float turnDelayMin = 0.5f;
-	[Range(0f, 5f)]public float turnDelayMax = 0.9f;
+	[Range(1f, 7f)]public float moveSpeedMin = 0.5f;
+	[Range(1f, 7f)]public float moveSpeedMax = 1f;
+	[Range(1f, 7f)]public float turnDelayMin = 0.5f;
+	[Range(1f, 7f)]public float turnDelayMax = 0.9f;
 	[Range(0f, 5f)]public float sizeMin = 0.8f;
 	[Range(0f, 5f)]public float sizeMax = 1.3f;
 
-	private GameObject player;
+	protected GameObject player;
 	private readonly string playerTagName = "Player";
 	private readonly float speedDamp = 0.5f;
-	private readonly float movePower = 100f;
-	private float moveSpeed;
-	private float turnDelay;
+	protected readonly float movePower = 100f;
+	protected float moveSpeed;
+	protected float turnDelay;
 	private float size;
 
-	private bool canMove;
-	private Rigidbody2D rbody;
+	protected bool canMove;
+	protected Rigidbody2D rbody;
 	private float targetRotation;
 
-	void Start() {
+	void Awake() {
+		rbody = GetComponent<Rigidbody2D> ();
 		player = GameObject.FindGameObjectWithTag (playerTagName);
+
+	}
+
+	void Start() {
 		moveSpeed = Random.Range (moveSpeedMin, moveSpeedMax);
 		turnDelay = Random.Range (turnDelayMin, turnDelayMax);
 		size = Random.Range (moveSpeedMin, sizeMax);
 		canMove = true;
-		rbody = GetComponent<Rigidbody2D> ();
+		//rbody = GetComponent<Rigidbody2D> ();
 	}
 
 	void FixedUpdate() {
 		limitMovement ();
+		turnToPlayer ();
 		if (canMove) {
-			turnToPlayer ();
 			moveToPlayer ();
 		}
 	}
@@ -44,12 +49,12 @@ public class EnemyMovements : MonoBehaviour {
 	void turnToPlayer() {
 		Vector3 vecDiff = player.transform.position - this.transform.position;
 		float angle = Mathf.Atan2 (vecDiff.y, vecDiff.x) * Mathf.Rad2Deg;
-		Quaternion targetRotation = Quaternion.AngleAxis (angle, Vector3.forward);
+		Quaternion targetRotation = Quaternion.AngleAxis (angle - 90f, Vector3.forward);
 		transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * turnDelay);
 	}
 
 	void moveToPlayer() {
-		rbody.AddForce (transform.right * movePower * Time.deltaTime);
+		rbody.AddForce (transform.up * movePower * Time.deltaTime);
 		//transform.Translate (transform.InverseTransformDirection(transform.right) * moveSpeed * Time.deltaTime);
 	}
 

@@ -20,11 +20,11 @@ public class EnemySpawnerManager : MonoBehaviour {
 
 
 //================================================== Main class information =========================================================//
-	[HideInInspector]
-	public int totalWaveEnemy;
+
+	[HideInInspector]public int totalWaveEnemy;
+	[HideInInspector]public int nextWaveIndex = 0;
 
 	public MonsterWave[] monsterWaveList;
-	public int nextWaveIndex = 0;
 
 	[Space(10)]
 	public GameObject[] spawnpointList;

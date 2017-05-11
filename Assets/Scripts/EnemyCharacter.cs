@@ -23,7 +23,7 @@ public class EnemyCharacter : Character {
 	protected override void Death ()
 	{
         base.Death();
-		//Gamemanager.instance.EnemyLeftInCurrentWave--;
+		//GameManager.Instance.enemyLeftInCurrentWave--;
 		if (EnemyDeathEvent != null) {
 			EnemyDeathEvent ();
 		}

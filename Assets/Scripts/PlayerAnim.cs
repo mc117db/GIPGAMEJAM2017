@@ -4,13 +4,36 @@ using UnityEngine;
 
 public class PlayerAnim : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	private Animator anim;
+	private bool isSoggy = false;
+
+	/*
+	public bool IsSoggy {
+		get{
+			return isSoggy;
+		}
+		set {
+			if (value) {
+				anim.SetBool ("isSoggy", true);
+			} else {
+				anim.SetBool ("isSoggy", false);
+			}
+			isSoggy = value;
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	*/
+
+	void Start() {
+		anim = GetComponent<Animator> ();
 	}
+
+	void Update() {
+		if (isSoggy) {
+			anim.SetBool ("isSoggy", true);
+		} else {
+			anim.SetBool ("isSoggy", false);
+		}
+	}
+
+
 }
