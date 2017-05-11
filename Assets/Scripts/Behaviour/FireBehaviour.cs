@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FireBehaviour:MonoBehaviour {
     public GameObject bulletPrefab;
-    public static int DefaultDamage = 3;
-    public static int DefaultSpeed = 3;
+    public int DefaultDamage = 3;
+    public int DefaultSpeed = 3;
     public int LevelOneDamage;
     public float LevelOneSpeed;
     public int LevelTwoDamage;

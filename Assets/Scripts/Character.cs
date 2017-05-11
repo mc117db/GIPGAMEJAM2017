@@ -21,7 +21,8 @@ public class Character : MonoBehaviour,IDamagable,IRecycle {
 			if (HealthChangeEvent != null) {
 				HealthChangeEvent (hp);
 			}
-			if (hp <= 0) {
+			if (hp != 0 && value <= 0) {
+                hp = 0;
 				Death ();
 			}
 		}
@@ -44,10 +45,10 @@ public class Character : MonoBehaviour,IDamagable,IRecycle {
 	}
 	public virtual void Restart()
 	{
-		hp = maxHealth;
+		Health = maxHealth;
 	}
 	public virtual void Shutdown()
 	{
-		//GameObjectUtil.Destroy (gameObject);
+		
 	}
 }
