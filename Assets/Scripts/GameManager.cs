@@ -6,11 +6,13 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager Instance { get; private set; }
     public bool gameStarted { get; private set; }
+	public int enemyLeftInCurrentWave;
 
-	private readonly float waveStartDelay = 3f;
+	private readonly float waveStartDelay = 6f;
+	private readonly string enemyTagString = "Enemy";
+	private readonly string playerTagString = "Player";
 	private EnemySpawnerManager enemySpawnerManager;
 	private bool isGameWon = false;
-	private int enemyLeftInCurrentWave;
 	[SerializeField]
 	private GameObject countdownPrefab;
 
@@ -33,7 +35,11 @@ public class GameManager : MonoBehaviour {
 			resetEnemyNumber ();
 		}
 		// =====================================================================================
-
+		if (enemySpawnerManager.nextWaveIndex == enemySpawnerManager.monsterWaveList.Length - 1
+			&& enemyLeftInCurrentWave <= 0 && !isGameWon) {
+			isGameWon = true;
+			StartCoroutine (gameWonEffects());
+		}
 
 		if (gameStarted && !isGameWon && isNextWaveReady()) {
 			startNextWave ();
@@ -45,17 +51,36 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine (nextWaveEffects ());
 	}
 
-	IEnumerator nextWaveEffects() {
-		// play 5,4,3,2,1
-		yield return new WaitForSeconds(waveStartDelay);
-		enemySpawnerManager.spawnNextWave ();
-	}
-
 	private bool isNextWaveReady() {
 		if (enemyLeftInCurrentWave <= 0) {
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	IEnumerator nextWaveEffects() {
+		Instantiate (countdownPrefab, transform.position, Quaternion.identity);
+		yield return new WaitForSeconds(waveStartDelay);
+		enemySpawnerManager.spawnNextWave ();
+	}
+
+	IEnumerator gameWonEffects() {
+		stopPlayerMovements ();
+		stopAllEnemiesMovements ();
+		yield return new WaitForSeconds (2f);
+		// yan ling code here
+	}
+
+	private void stopPlayerMovements() {
+		GameObject player = GameObject.FindGameObjectWithTag (playerTagString);
+		player.GetComponent<PlayerInputs> ().stopPlayerMovement ();
+	}
+
+	private void stopAllEnemiesMovements() {
+		GameObject[] allEnemies = GameObject.FindGameObjectsWithTag (enemyTagString);
+		foreach(GameObject enemy in allEnemies) {
+			enemy.GetComponent<EnemyMovements> ().stopMovement ();
 		}
 	}
 		

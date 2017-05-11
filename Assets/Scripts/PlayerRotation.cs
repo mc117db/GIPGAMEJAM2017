@@ -15,7 +15,7 @@ public class PlayerRotation : MonoBehaviour {
 	void Update() {
 		if (PlayerInputs.canMove) {
 			Vector2 vectorDiff = Camera.main.ScreenToWorldPoint (PlayerInputs.mousePos) - transform.position;
-			transform.right = vectorDiff;
+			transform.up = vectorDiff;
 		}
 	}
 }

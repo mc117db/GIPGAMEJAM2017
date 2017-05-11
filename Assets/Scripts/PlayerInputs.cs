@@ -72,4 +72,9 @@ public class PlayerInputs : MonoBehaviour {
 			}
 		}
 	}
+
+
+	public void stopPlayerMovement() {
+		canMove = false;
+	}
 }

@@ -17,8 +17,28 @@ public class FireController : MonoBehaviour {
     public FireBehaviour SOFTBEHAVIOUR;
     public delegate void OnEvent();
     public static event OnEvent FireEvent;
+	public bool playerTransformInchargeOfAim;
+	public bool inheritPlayerVelocity;
 	
 	// Update is called once per frame
+	void Start()
+	{
+        AffinityController.AffinityChange += ModifyFireSettings;
+		if (playerTransformInchargeOfAim) {
+			HARDBEHAVIOUR.TogglePlayerInchargeOfAim (true);
+			SOFTBEHAVIOUR.TogglePlayerInchargeOfAim (true);
+		}
+		if (inheritPlayerVelocity) {
+			HARDBEHAVIOUR.ToggleInheritMovemement (true);
+			SOFTBEHAVIOUR.ToggleInheritMovemement (true);
+		}
+
+	}
+    void ModifyFireSettings(AffinityMode mode, int power)
+    {
+        currentAffinity = mode;
+        affinityPower = power;
+    }
 	void Update () {
         #region Countdown RoF
         if (elaspedTime < RateOfFire)

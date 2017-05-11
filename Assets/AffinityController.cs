@@ -4,8 +4,11 @@ using UnityEngine;
 public enum AffinityMode { Hard, Soft }
 public class AffinityController : MonoBehaviour {
     public static AffinityController instance;
+    public float inputScrollDelta;
+    public float affinityScrollMult = 0.5f;
 
     private float currentAffinityPoint = 0;
+    public float currentAffinityLerp01;
     private float rangeTowardsMaxAffinity;
     public float degradeRate = 2f;
 
@@ -13,6 +16,8 @@ public class AffinityController : MonoBehaviour {
     [Header("Second threshold additive from the first one")]
     public int levelTwoAdditiveThreshold;
     public bool ultimateReady;
+    public delegate void OnAffinityChange(AffinityMode mode, int power);
+    public static event OnAffinityChange AffinityChange; //TODO: Deal with this when the scene change
 
     private AffinityMode currentAffinity;
     public AffinityMode CurrentAffinity
@@ -37,6 +42,19 @@ public class AffinityController : MonoBehaviour {
         set
         {
             currentAffinityPoint = value;
+            float currentAffinityAbs = Mathf.Abs(currentAffinityPoint);
+            if (currentAffinityAbs < levelOneThreshold)
+            {
+                currentAffinityPower = 0;
+            }
+            else if (currentAffinityAbs > levelOneThreshold && currentAffinityAbs < rangeTowardsMaxAffinity)
+            {
+                currentAffinityPower = 1;
+            }
+            else if (currentAffinityAbs == rangeTowardsMaxAffinity)
+            {
+                currentAffinityPower = 2;
+            }
         }
     }
 
@@ -57,7 +75,11 @@ public class AffinityController : MonoBehaviour {
     }
     private void Update()
     {
-        DegradeAffinityOverTime();
+        //DegradeAffinityOverTime();
+        inputScrollDelta = Input.mouseScrollDelta.y;
+        CurrentAffinityPoint += inputScrollDelta * affinityScrollMult;
+        
+
         CurrentAffinityPoint = Mathf.Clamp(CurrentAffinityPoint,
             -rangeTowardsMaxAffinity,
             rangeTowardsMaxAffinity); // Clamp within the range
@@ -68,6 +90,11 @@ public class AffinityController : MonoBehaviour {
         else
         {
             CurrentAffinity = AffinityMode.Soft;
+        }
+        currentAffinityLerp01 = Mathf.InverseLerp(-rangeTowardsMaxAffinity, rangeTowardsMaxAffinity, CurrentAffinityPoint);
+        if (AffinityChange != null)
+        {
+            AffinityChange(CurrentAffinity, currentAffinityPower);
         }
     }
     #endregion

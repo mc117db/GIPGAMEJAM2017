@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawnerManager : MonoBehaviour {
 
 	[System.Serializable]
-	private class MonsterGroup {
+	public class MonsterGroup {
 		public GameObject monsterType;
 		public int monsterAmount;
 		public float spawnTimer;
@@ -14,7 +14,7 @@ public class EnemySpawnerManager : MonoBehaviour {
 	}
 
 	[System.Serializable]
-	private class MonsterWave {
+	public class MonsterWave {
 		public MonsterGroup[] monsterGroupList;
 	}
 
@@ -23,9 +23,8 @@ public class EnemySpawnerManager : MonoBehaviour {
 	[HideInInspector]
 	public int totalWaveEnemy;
 
-	[SerializeField]
-	private MonsterWave[] monsterWaveList;
-	private int nextWaveIndex = 0;
+	public MonsterWave[] monsterWaveList;
+	public int nextWaveIndex = 0;
 
 	[Space(10)]
 	public GameObject[] spawnpointList;
@@ -63,5 +62,4 @@ public class EnemySpawnerManager : MonoBehaviour {
 			}
 		}
 	}
-		
 }

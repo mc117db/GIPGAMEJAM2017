@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class FireBehaviour:MonoBehaviour {
+public class FireBehaviour:MonoBehaviour {
     public GameObject bulletPrefab;
     public static int DefaultDamage = 3;
     public static int DefaultSpeed = 3;
@@ -10,19 +10,36 @@ public abstract class FireBehaviour:MonoBehaviour {
     public float LevelOneSpeed;
     public int LevelTwoDamage;
     public float LevelTwoSpeed;
+	[Header("Toggle this if player is responsible for rotating")]
+	private bool isPlayerInchargeOfAim;
+	private bool inheritMovementVelocity;
+	public Transform rootTransform;
+	public Rigidbody2D rootRigidbody;
 
+	public void TogglePlayerInchargeOfAim (bool isON)
+	{
+		isPlayerInchargeOfAim = isON;
+	}
+	public void ToggleInheritMovemement(bool isOn)
+	{
+		inheritMovementVelocity = isOn;
+	}
     public void FireBasedOnAffinity(int affinityPower,Vector2 aimDirection)
     {
+		Vector2 finalAimDir = aimDirection;
+		if (isPlayerInchargeOfAim) {
+			finalAimDir = rootTransform.right;
+		}
         switch (affinityPower)
         {
             case 0:
-                FireDefault(aimDirection);
+			FireDefault(finalAimDir);
                     break;
             case 1:
-                FireLevelOne(aimDirection);
+			FireLevelOne(finalAimDir);
                 break;
             case 2:
-                FireLevelTwo(aimDirection);
+			FireLevelTwo(finalAimDir);
                 break;
         }
     }
@@ -50,7 +67,7 @@ public abstract class FireBehaviour:MonoBehaviour {
     protected void SpawnBullet(Vector2 fireDir,float spd,int dmg)
     {
         GameObject bulletOne = GameObjectUtil.Instantiate(bulletPrefab, transform.position);
-        bulletOne.GetComponent<BulletBehaviour>().Initialize(fireDir, spd, dmg);
+		bulletOne.GetComponent<BulletBehaviour>().Initialize(inheritMovementVelocity?fireDir+rootRigidbody.velocity:fireDir, spd, dmg);
     }
     #endregion
 }

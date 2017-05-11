@@ -17,12 +17,12 @@ public class PlayerAimLine : MonoBehaviour {
 	void Update() {
 		RaycastHit hit;
 		hitLayer = LayerMask.GetMask (enemyLayerString);
-		if (Physics.Raycast (transform.position, transform.right, out hit, maxDistance, hitLayer)) {
+		if (Physics.Raycast (transform.position, transform.up, out hit, maxDistance, hitLayer)) {
 			lineRenderer.SetPosition (0, transform.position);
 			lineRenderer.SetPosition (1, hit.point);
 		} else {
 			lineRenderer.SetPosition (0, transform.position);
-			lineRenderer.SetPosition (1, transform.position + transform.right *  maxDistance);
+			lineRenderer.SetPosition (1, transform.position + transform.up *  maxDistance);
 		}
 	}
 }

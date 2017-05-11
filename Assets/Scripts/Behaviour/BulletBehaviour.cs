@@ -45,7 +45,12 @@ public class BulletBehaviour : MonoBehaviour, IRecycle {
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-
+		if (collision.gameObject.GetComponent(typeof(IDamagable)))
+		{
+			IDamagable other = (IDamagable)collision.gameObject.GetComponent(typeof(IDamagable));
+			other.TakeDamage (damage);
+		}
+		GameObjectUtil.Destroy (gameObject);
     }
 
     // Object pooler interface implementations

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyMovements : MonoBehaviour {
 
 	[Range(0f, 5f)]public float moveSpeedMin = 0.5f;
@@ -13,11 +14,14 @@ public class EnemyMovements : MonoBehaviour {
 
 	private GameObject player;
 	private readonly string playerTagName = "Player";
+	private readonly float speedDamp = 0.5f;
+	private readonly float movePower = 100f;
 	private float moveSpeed;
 	private float turnDelay;
 	private float size;
 
 	private bool canMove;
+	private Rigidbody2D rbody;
 	private float targetRotation;
 
 	void Start() {
@@ -26,9 +30,11 @@ public class EnemyMovements : MonoBehaviour {
 		turnDelay = Random.Range (turnDelayMin, turnDelayMax);
 		size = Random.Range (moveSpeedMin, sizeMax);
 		canMove = true;
+		rbody = GetComponent<Rigidbody2D> ();
 	}
 
 	void FixedUpdate() {
+		limitMovement ();
 		if (canMove) {
 			turnToPlayer ();
 			moveToPlayer ();
@@ -43,7 +49,18 @@ public class EnemyMovements : MonoBehaviour {
 	}
 
 	void moveToPlayer() {
-		transform.Translate (transform.InverseTransformDirection(transform.right) * moveSpeed * Time.deltaTime);
+		rbody.AddForce (transform.right * movePower * Time.deltaTime);
+		//transform.Translate (transform.InverseTransformDirection(transform.right) * moveSpeed * Time.deltaTime);
 	}
 
+	void limitMovement() {
+		if (rbody.velocity.magnitude > moveSpeed) {
+			Vector2 newSpeed = rbody.velocity.normalized * moveSpeed;
+			rbody.velocity = Vector2.Lerp (rbody.velocity, newSpeed, speedDamp);
+		} 
+	}
+
+	public void stopMovement() {
+		this.canMove = false;
+	}
 }
