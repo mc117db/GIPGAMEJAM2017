@@ -453,7 +453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 570034417}
   healthText: {fileID: 164110333}
-  countdownTimer: {fileID: 0}
+  countdownTimer: {fileID: 814856861}
 --- !u!114 &258575945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 308346837}
   - component: {fileID: 308346838}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Ammo Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -859,6 +859,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canShoot: 1
   RateOfFire: 0.2
+  maxAmmo: 100
+  ammoPerShot: 1
   aimDirectionTEST: {x: 1, y: 0}
   NeutralFireBehaviour: {fileID: 490125288}
   playerTransformInchargeOfAim: 1
@@ -1371,6 +1373,48 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1001 &980988457
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4684712292249898, guid: 433d9390891edf74897da01b6f79a5d9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684712292249898, guid: 433d9390891edf74897da01b6f79a5d9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684712292249898, guid: 433d9390891edf74897da01b6f79a5d9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684712292249898, guid: 433d9390891edf74897da01b6f79a5d9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684712292249898, guid: 433d9390891edf74897da01b6f79a5d9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684712292249898, guid: 433d9390891edf74897da01b6f79a5d9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684712292249898, guid: 433d9390891edf74897da01b6f79a5d9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684712292249898, guid: 433d9390891edf74897da01b6f79a5d9, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 433d9390891edf74897da01b6f79a5d9, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &988715762
 GameObject:
   m_ObjectHideFlags: 0

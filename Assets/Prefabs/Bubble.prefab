@@ -89,6 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a2b88b51cd30e4eaf947786c7339b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIsInsideThisBubble: 0
+  ammoVal: 0
+  degradeRate: 0.2
+  bubbleImage: {fileID: 0}
 --- !u!212 &212885144069375568
 SpriteRenderer:
   m_ObjectHideFlags: 1

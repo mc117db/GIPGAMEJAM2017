@@ -12,7 +12,8 @@ public class UIController : MonoBehaviour {
 	void Start () {
         PlayerCharacter.instance.HealthChangeEvent += UpdateHealth;
         ScoreController.ScoreChangeEvent += UpdateScore;
-	}
+        FireController.OnAmmoLerpChangeEvent += UpdateAmmoBarLerp;
+    }
 	void UpdateScore (int score)
     {
         scoreText.text = score.ToString();
@@ -21,7 +22,7 @@ public class UIController : MonoBehaviour {
     {
         healthText.text = health.ToString();
     }
-    void UpdateCountdownTimer01(float lerpVal)
+    void UpdateAmmoBarLerp(float lerpVal)
     {
         countdownTimer.value = lerpVal;
     }
