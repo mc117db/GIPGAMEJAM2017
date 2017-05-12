@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour {
     public bool gameStarted { get; private set; }
 	public int enemyLeftInCurrentWave;
 
+    private bool hasBubbleStarted = false;
+
 	/*
  	public bool GameStarted {
 		get {
@@ -66,6 +68,11 @@ public class GameManager : MonoBehaviour {
 			startNextWave ();
 			print ("call once");
 		}
+        if(!hasBubbleStarted && gameStarted) {
+            hasBubbleStarted = true;
+            // statrt spawning bubble
+        }
+        
 	}
 
 	public void startNextWave() {

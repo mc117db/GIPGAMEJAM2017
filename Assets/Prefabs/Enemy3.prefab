@@ -218,6 +218,7 @@ MonoBehaviour:
   turnDelayMax: 2.3
   sizeMin: 0.77
   sizeMax: 1.3
+  character: {fileID: 114921007063560256}
 --- !u!114 &114921007063560256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,9 +230,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69597248e44f7423788f75a997e0117c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 21
+  maxHealth: 150
   ENEMYTYPE: 2
-  damageAmount: 5
+  damageAmount: 20
 --- !u!212 &212004626208424970
 SpriteRenderer:
   m_ObjectHideFlags: 1

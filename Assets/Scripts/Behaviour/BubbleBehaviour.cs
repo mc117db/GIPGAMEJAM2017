@@ -6,17 +6,17 @@ public class BubbleBehaviour : MonoBehaviour
 {
     public delegate void OnEvent();
     public static event OnEvent OnBubblePop;
-    public static bool playerIsInsideABubble; // This is to account for the case when player is inside two bubbles
+    //public static bool playerIsInsideABubble; // This is to account for the case when player is inside two bubbles
     public bool playerIsInsideThisBubble;
     public float ammoVal = 200f;
     public float degradeRate = 10f;
-    public SpriteRenderer bubbleImage;
+    //public SpriteRenderer bubbleImage;
     void Start()
     {
-        if (!bubbleImage)
-        {
-            bubbleImage = GetComponent<SpriteRenderer>();
-        }
+        //if (!bubbleImage)
+        //{
+        //    bubbleImage = GetComponent<SpriteRenderer>();
+        //}
     }
 
     void Update()

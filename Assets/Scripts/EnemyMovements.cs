@@ -13,6 +13,7 @@ public class EnemyMovements : MonoBehaviour {
 	[Range(0f, 5f)]public float sizeMax = 1.3f;
 
 	protected GameObject player;
+    public EnemyCharacter character;
 	private readonly string playerTagName = "Player";
 	private readonly float speedDamp = 0.5f;
 	protected readonly float movePower = 100f;
@@ -53,8 +54,19 @@ public class EnemyMovements : MonoBehaviour {
 		transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * turnDelay);
 	}
 
-	void moveToPlayer() {
-		rbody.AddForce (transform.up * movePower * Time.deltaTime);
+    void moveToPlayer() {
+        switch (character.ENEMYTYPE)
+        {
+            case EnemyType.Normal:
+                rbody.AddForce(transform.up * movePower * 6f * Time.deltaTime);
+                break;
+            case EnemyType.Heavy:
+                rbody.AddForce(transform.up * movePower * 1.5f * Time.deltaTime);
+                break;
+            case EnemyType.Swarm:
+                rbody.AddForce(transform.up * movePower * 10 * Time.deltaTime);
+                break;
+        }
 		//transform.Translate (transform.InverseTransformDirection(transform.right) * moveSpeed * Time.deltaTime);
 	}
 
