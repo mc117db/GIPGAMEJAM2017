@@ -27,7 +27,7 @@ public class EnemyBugMovement : EnemyMovements {
 		transform.rotation = targetRotation;
 
 		canMove = true;
-		rbody.AddForce (transform.up * movePower * 500f * Time.deltaTime);
+		rbody.AddForce (transform.up * movePower * 1500f * Time.deltaTime);
 		yield return new WaitForSeconds (moveDuration);
 		stopImmediately ();
 	}

@@ -42,7 +42,6 @@ public class BubbleBehaviour : MonoBehaviour
             firecontroller.AddAmmo(ammoVal);
             if (OnBubblePop != null)
             {
-                Debug.Log("BUBBLE POP!");
                 OnBubblePop();
             }
         }

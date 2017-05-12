@@ -6,6 +6,7 @@ using UnityEngine;
 public interface IToggleFire { void ToggleFire(bool isOn); }
 public interface IAddAmmo { void AddAmmo(float ammoAmount); }
 public class FireController : MonoBehaviour,IToggleFire,IAddAmmo {
+    public static FireController instance;
 	public bool canShoot;
     public float RateOfFire;
     private float currentAmmo;
@@ -60,7 +61,10 @@ public class FireController : MonoBehaviour,IToggleFire,IAddAmmo {
     }
 
     //public bool inheritPlayerVelocity;
-
+    void Awake()
+    {
+        instance = this;
+    }
     // Update is called once per frame
     void Start()
 	{
@@ -105,6 +109,10 @@ public class FireController : MonoBehaviour,IToggleFire,IAddAmmo {
     {
         CurrentAmmo -= ammoPerShot;
         NeutralFireBehaviour.FireBasedOnAffinity(0, aimDirectionTEST);
+    }
+    public void Reload()
+    {
+        CurrentAmmo = maxAmmo;
     }
     public void ToggleFire(bool isOn)
     {

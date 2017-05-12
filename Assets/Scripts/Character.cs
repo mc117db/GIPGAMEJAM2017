@@ -21,7 +21,7 @@ public class Character : MonoBehaviour,IDamagable,IRecycle {
 			if (HealthChangeEvent != null) {
 				HealthChangeEvent (hp);
 			}
-			if (hp != 0 && value <= 0) {
+			if (hp<=0 ) {
                 hp = 0;
 				Death ();
 			}

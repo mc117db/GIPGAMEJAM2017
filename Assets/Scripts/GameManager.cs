@@ -7,7 +7,9 @@ public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; }
     public bool gameStarted { get; private set; }
 	public int enemyLeftInCurrentWave;
+    private bool isSpawningCountdown;
 
+    public GameObject gameoverPanel;
     private bool hasBubbleStarted = false;
 
 	/*
@@ -51,10 +53,12 @@ public class GameManager : MonoBehaviour {
     }
 		
     void Start () {
-        gameStarted = false;
+        gameStarted = true;
 		enemySpawnerManager = GetComponent<EnemySpawnerManager> ();
 		EnemyCharacter.EnemyRemovalEvent += decreaseEnemy;
-	}
+        PlayerCharacter.PlayerDeath += LoseEvent;
+
+    }
 
 	void Update () {
 		// for debugging========================================================================
@@ -62,11 +66,10 @@ public class GameManager : MonoBehaviour {
 			gameStarted = true;
 		if(Input.GetKeyDown(KeyCode.O)) 
 			enemyLeftInCurrentWave = 0;
-		// =====================================================================================
-
+        // =====================================================================================
 		if (gameStarted && enemyLeftInCurrentWave <= 0) {
+            if(!isSpawningCountdown)
 			startNextWave ();
-			print ("call once");
 		}
         if(!hasBubbleStarted && gameStarted) {
             hasBubbleStarted = true;
@@ -76,7 +79,9 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void startNextWave() {
-		enemyLeftInCurrentWave = enemySpawnerManager.getEnemyNumber ();
+        print("SPAWNNNNNNNNNNNNNNNNNNN");
+        isSpawningCountdown = true;
+        enemyLeftInCurrentWave = enemySpawnerManager.getEnemyNumber ();
 		StartCoroutine (nextWaveEffects ());
 	}
 
@@ -84,8 +89,10 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds (extraDelay);
 		Instantiate (countdownPrefab, transform.position, Quaternion.identity);
 		yield return new WaitForSeconds(waveStartDelay);
-		enemySpawnerManager.spawnNextWave ();
-	}
+        isSpawningCountdown = false;
+        enemySpawnerManager.spawnNextWave ();
+
+    }
 
 	private void stopPlayerMovements() {
 		GameObject player = GameObject.FindGameObjectWithTag (playerTagString);
@@ -98,7 +105,36 @@ public class GameManager : MonoBehaviour {
 			enemy.GetComponent<EnemyMovements> ().stopMovement ();
 		}
 	}
-		
+
+    private void killAllEnemiesMovements()
+    {
+        GameObject[] allEnemies = GameObject.FindGameObjectsWithTag(enemyTagString);
+        foreach (GameObject enemy in allEnemies)
+        {
+            Destroy(enemy);
+        }
+    }
+    private void LoseEvent()
+    {
+        killAllEnemiesMovements();
+       // Cursor.visible = true;
+        enemyLeftInCurrentWave = 0;
+        enemySpawnerManager.nextWaveIndex = 0;
+        gameoverPanel.SetActive(true);
+        gameStarted = false;
+        enemySpawnerManager.StopAllCoroutines();
+        StartCoroutine(RestartGame());
+        //OVER SHOW GAME OVER SCREEN
+    }
+    IEnumerator RestartGame()
+    {
+        yield return new WaitForSeconds(4f);
+        gameoverPanel.SetActive(false);
+        PlayerCharacter.instance.Restart();
+        FireController.instance.Reload();
+        gameStarted = true;
+    }
+
     public void startGame() {
         gameStarted = true;
     }
@@ -109,7 +145,7 @@ public class GameManager : MonoBehaviour {
 
 	void decreaseEnemy () {
 		enemyLeftInCurrentWave--;
-		print ("decreased! now left " + enemyLeftInCurrentWave);
+        print("decrease!!!!!!!!!!!!");
 	}
 
 	/*

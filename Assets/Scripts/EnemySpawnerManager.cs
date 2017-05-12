@@ -62,4 +62,9 @@ public class EnemySpawnerManager : MonoBehaviour {
 			}
 		}
 	}
+
+    public void stopAllSpawning()
+    {
+        StopAllCoroutines();
+    }
 }

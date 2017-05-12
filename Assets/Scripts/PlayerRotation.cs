@@ -8,8 +8,8 @@ public class PlayerRotation : MonoBehaviour {
 	[SerializeField]private Texture2D cursorImage;
 
 	void Start() {
-		Cursor.SetCursor (cursorImage, new Vector2(0,0), CursorMode.ForceSoftware);
-		Cursor.lockState = CursorLockMode.Confined;
+       // Cursor.visible = true;
+	//	Cursor.lockState = CursorLockMode.Confined;
 	}
 
 	void Update() {

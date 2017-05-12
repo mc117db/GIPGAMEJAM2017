@@ -12,6 +12,9 @@ public class IntroSequence : MonoBehaviour
     public Sprite panel2;
     [SerializeField]
     public Sprite panel3;
+    [SerializeField]
+    public Sprite tutorialScreen;
+    public GameObject title;
 
     private int currPanel;
     private Sprite[] panels;
@@ -20,7 +23,7 @@ public class IntroSequence : MonoBehaviour
     void Start()
     {
         currPanel = 0;
-        panels = new Sprite[3] { panel1, panel2, panel3 };
+        panels = new Sprite[4] { panel1, panel2, panel3, tutorialScreen };
     }
 
     // Update is called once per frame
@@ -31,10 +34,7 @@ public class IntroSequence : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (GameManager.Instance.gameStarted)
-        {
             goToNextPanel();
-        }
     }
 
     public void goToNextPanel()
@@ -45,8 +45,15 @@ public class IntroSequence : MonoBehaviour
         }
         else
         {
-            GetComponent<SpriteRenderer>().sprite = panels[currPanel];
-            currPanel += 1;
+            if (title.activeSelf)
+            {
+                title.SetActive(false);
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().sprite = panels[currPanel];
+                currPanel += 1;
+            }
         }
     }
 }
