@@ -10,8 +10,6 @@ public class IntroSequence : MonoBehaviour
     public Sprite panel1;
     [SerializeField]
     public Sprite panel2;
-    [SerializeField]
-    public Sprite panel3;
 
     private int currPanel;
     private Sprite[] panels;
@@ -20,7 +18,7 @@ public class IntroSequence : MonoBehaviour
     void Start()
     {
         currPanel = 0;
-        panels = new Sprite[3] { panel1, panel2, panel3 };
+        panels = new Sprite[2] { panel1, panel2 };
     }
 
     // Update is called once per frame
