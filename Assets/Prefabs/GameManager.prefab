@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 114738949445982212}
   - component: {fileID: 114577006888254894}
   - component: {fileID: 114505095059017896}
+  - component: {fileID: 82011680272497850}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -420,6 +421,86 @@ Transform:
   m_Father: {fileID: 4584510831114462}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &82011680272497850
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1179920179563726}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7b158210f0fa0da44be3eb5ddab50c7f, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114180773368096122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -435,67 +516,7 @@ MonoBehaviour:
   nextWaveIndex: 0
   monsterWaveList:
   - monsterGroupList:
-    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
-        type: 2}
-      monsterAmount: 1
-      spawnTimer: 0
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
-        type: 2}
-      monsterAmount: 1
-      spawnTimer: 1
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
-        type: 2}
-      monsterAmount: 1
-      spawnTimer: 2
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
-        type: 2}
-      monsterAmount: 1
-      spawnTimer: 3
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
-        type: 2}
-      monsterAmount: 1
-      spawnTimer: 4
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
-        type: 2}
-      monsterAmount: 1
-      spawnTimer: 5
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
-        type: 2}
-      monsterAmount: 1
-      spawnTimer: 6
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
-        type: 2}
-      monsterAmount: 1
-      spawnTimer: 7
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
-        type: 2}
-      monsterAmount: 1
-      spawnTimer: 8
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
-        type: 2}
-      monsterAmount: 1
-      spawnTimer: 9
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: c5620d20c02ad0b4e8cb4507903e8b71,
+    - monsterType: {fileID: 1654342657976748, guid: 27e22309a14aabf498c679ebc7289784,
         type: 2}
       monsterAmount: 10
       spawnTimer: 0
@@ -504,118 +525,45 @@ MonoBehaviour:
   - monsterGroupList:
     - monsterType: {fileID: 1654342657976748, guid: 27e22309a14aabf498c679ebc7289784,
         type: 2}
-      monsterAmount: 5
-      spawnTimer: 0
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: 14060a1ff5329704ea232204a733e4b5,
-        type: 2}
-      monsterAmount: 1
-      spawnTimer: 0
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: 27e22309a14aabf498c679ebc7289784,
-        type: 2}
-      monsterAmount: 5
-      spawnTimer: 7
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: 14060a1ff5329704ea232204a733e4b5,
-        type: 2}
-      monsterAmount: 1
-      spawnTimer: 7
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: c5620d20c02ad0b4e8cb4507903e8b71,
-        type: 2}
-      monsterAmount: 5
-      spawnTimer: 7
-      isRandom: 1
-      spawnpoints: []
-  - monsterGroupList:
-    - monsterType: {fileID: 1654342657976748, guid: 14060a1ff5329704ea232204a733e4b5,
-        type: 2}
-      monsterAmount: 1
-      spawnTimer: 0
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: 27e22309a14aabf498c679ebc7289784,
-        type: 2}
       monsterAmount: 10
       spawnTimer: 0
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
-        type: 2}
-      monsterAmount: 20
-      spawnTimer: 15
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: 14060a1ff5329704ea232204a733e4b5,
-        type: 2}
-      monsterAmount: 2
-      spawnTimer: 25
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: c5620d20c02ad0b4e8cb4507903e8b71,
-        type: 2}
-      monsterAmount: 7
-      spawnTimer: 30
-      isRandom: 1
-      spawnpoints: []
-  - monsterGroupList:
-    - monsterType: {fileID: 1654342657976748, guid: 27e22309a14aabf498c679ebc7289784,
-        type: 2}
-      monsterAmount: 10
-      spawnTimer: 0
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: 14060a1ff5329704ea232204a733e4b5,
-        type: 2}
-      monsterAmount: 2
-      spawnTimer: 0
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
-        type: 2}
-      monsterAmount: 20
-      spawnTimer: 15
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: 27e22309a14aabf498c679ebc7289784,
-        type: 2}
-      monsterAmount: 10
-      spawnTimer: 30
       isRandom: 1
       spawnpoints: []
     - monsterType: {fileID: 1654342657976748, guid: 14060a1ff5329704ea232204a733e4b5,
         type: 2}
       monsterAmount: 3
-      spawnTimer: 30
+      spawnTimer: 5
       isRandom: 1
       spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
+    - monsterType: {fileID: 1654342657976748, guid: 27e22309a14aabf498c679ebc7289784,
         type: 2}
-      monsterAmount: 20
-      spawnTimer: 40
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: c5620d20c02ad0b4e8cb4507903e8b71,
-        type: 2}
-      monsterAmount: 5
-      spawnTimer: 40
+      monsterAmount: 10
+      spawnTimer: 10
       isRandom: 1
       spawnpoints: []
   - monsterGroupList:
     - monsterType: {fileID: 1654342657976748, guid: 27e22309a14aabf498c679ebc7289784,
         type: 2}
-      monsterAmount: 15
+      monsterAmount: 5
       spawnTimer: 0
       isRandom: 1
       spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: 14060a1ff5329704ea232204a733e4b5,
+    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
         type: 2}
-      monsterAmount: 5
+      monsterAmount: 10
+      spawnTimer: 5
+      isRandom: 1
+      spawnpoints: []
+    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
+        type: 2}
+      monsterAmount: 10
+      spawnTimer: 10
+      isRandom: 1
+      spawnpoints: []
+  - monsterGroupList:
+    - monsterType: {fileID: 1654342657976748, guid: c5620d20c02ad0b4e8cb4507903e8b71,
+        type: 2}
+      monsterAmount: 10
       spawnTimer: 0
       isRandom: 1
       spawnpoints: []
@@ -627,38 +575,57 @@ MonoBehaviour:
       spawnpoints: []
     - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
         type: 2}
-      monsterAmount: 20
-      spawnTimer: 20
+      monsterAmount: 5
+      spawnTimer: 15
       isRandom: 1
       spawnpoints: []
+    - monsterType: {fileID: 1654342657976748, guid: 14060a1ff5329704ea232204a733e4b5,
+        type: 2}
+      monsterAmount: 1
+      spawnTimer: 15
+      isRandom: 1
+      spawnpoints: []
+  - monsterGroupList:
     - monsterType: {fileID: 1654342657976748, guid: 27e22309a14aabf498c679ebc7289784,
         type: 2}
       monsterAmount: 15
-      spawnTimer: 35
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: 14060a1ff5329704ea232204a733e4b5,
-        type: 2}
-      monsterAmount: 5
-      spawnTimer: 35
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
-        type: 2}
-      monsterAmount: 20
-      spawnTimer: 50
-      isRandom: 1
-      spawnpoints: []
-    - monsterType: {fileID: 1654342657976748, guid: 14060a1ff5329704ea232204a733e4b5,
-        type: 2}
-      monsterAmount: 5
-      spawnTimer: 50
+      spawnTimer: 0
       isRandom: 1
       spawnpoints: []
     - monsterType: {fileID: 1654342657976748, guid: c5620d20c02ad0b4e8cb4507903e8b71,
         type: 2}
-      monsterAmount: 5
-      spawnTimer: 50
+      monsterAmount: 10
+      spawnTimer: 0
+      isRandom: 1
+      spawnpoints: []
+    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
+        type: 2}
+      monsterAmount: 15
+      spawnTimer: 10
+      isRandom: 1
+      spawnpoints: []
+    - monsterType: {fileID: 1654342657976748, guid: ad3f824f62b02724eacf74cf5736ba37,
+        type: 2}
+      monsterAmount: 15
+      spawnTimer: 15
+      isRandom: 1
+      spawnpoints: []
+    - monsterType: {fileID: 1654342657976748, guid: 14060a1ff5329704ea232204a733e4b5,
+        type: 2}
+      monsterAmount: 1
+      spawnTimer: 10
+      isRandom: 1
+      spawnpoints: []
+    - monsterType: {fileID: 1654342657976748, guid: 14060a1ff5329704ea232204a733e4b5,
+        type: 2}
+      monsterAmount: 1
+      spawnTimer: 15
+      isRandom: 1
+      spawnpoints: []
+    - monsterType: {fileID: 1654342657976748, guid: c5620d20c02ad0b4e8cb4507903e8b71,
+        type: 2}
+      monsterAmount: 10
+      spawnTimer: 15
       isRandom: 1
       spawnpoints: []
   spawnpointList:

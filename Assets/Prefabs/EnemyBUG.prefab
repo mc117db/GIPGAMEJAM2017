@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 95659321047319030}
   - component: {fileID: 114921007063560256}
   - component: {fileID: 114662478257251916}
+  - component: {fileID: 114770927135737574}
   m_Layer: 10
   m_Name: EnemyBUG
   m_TagString: Enemy
@@ -221,6 +222,18 @@ MonoBehaviour:
   character: {fileID: 114921007063560256}
   moveDuration: 0.6
   moveInterval: 0.7
+--- !u!114 &114770927135737574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654342657976748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0e1be90e38feb0458fc8f608fd2082c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 114921007063560256}
 --- !u!114 &114921007063560256
 MonoBehaviour:
   m_ObjectHideFlags: 1

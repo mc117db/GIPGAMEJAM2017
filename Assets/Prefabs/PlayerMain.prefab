@@ -21,8 +21,7 @@ GameObject:
   - component: {fileID: 4486547115157416}
   - component: {fileID: 212800577141441466}
   - component: {fileID: 114845532641004976}
-  - component: {fileID: 114741612490640354}
-  - component: {fileID: 114211105967556802}
+  - component: {fileID: 114384637929755790}
   m_Layer: 8
   m_Name: FiringPoint
   m_TagString: Untagged
@@ -44,13 +43,13 @@ GameObject:
   - component: {fileID: 114169317159788182}
   - component: {fileID: 114526293525800306}
   - component: {fileID: 114840065473725676}
-  - component: {fileID: 114799931741688630}
-  - component: {fileID: 82156176523743594}
   - component: {fileID: 50771483362511098}
   - component: {fileID: 120365707803087166}
   - component: {fileID: 114435792819773486}
   - component: {fileID: 95465867220650330}
-  m_Layer: 0
+  - component: {fileID: 58806205858148162}
+  - component: {fileID: 114242227820598966}
+  m_Layer: 8
   m_Name: PlayerMain
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -104,86 +103,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!82 &82156176523743594
-AudioSource:
+--- !u!58 &58806205858148162
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1516534468231056}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.34
 --- !u!95 &95465867220650330
 Animator:
   serializedVersion: 3
@@ -212,34 +146,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a059b1af71b55f84c9e0d04c5e4f0a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smallFishMaxSpeed: 2
-  bigFishMaxSpeed: 1
+  smallFishMaxSpeed: 10
+  bigFishMaxSpeed: 0.1
   movementPower: 50
-  stoppingDamp: 5
+  stoppingDamp: 100
   isSoggy: 0
-  minX: -7.8
-  maxX: 7.8
-  minY: -5
-  maxY: 5
---- !u!114 &114211105967556802
+  minX: -19
+  maxX: 19
+  minY: -12
+  maxY: 12
+--- !u!114 &114242227820598966
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1383133732660730}
+  m_GameObject: {fileID: 1516534468231056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecb6a6c64858fae48ab0be99a3848e4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c5e6e310c78ddf40bea25d0f82f6410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1968578087637858, guid: fd78f8a486b25894a9f76fc8f9b7e388,
-    type: 2}
-  LevelOneDamage: 3
-  LevelOneSpeed: 4
-  LevelTwoDamage: 2
-  LevelTwoSpeed: 3.5
-  rootTransform: {fileID: 4486547115157416}
-  rootRigidbody: {fileID: 0}
+  maxHealth: 100
 --- !u!114 &114332012006110124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -251,6 +178,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b79d691f7c099c1448a1f8fe03cc24bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSoggy: 0
+--- !u!114 &114384637929755790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1383133732660730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab7bf685ddaec463b9687e386b279de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1968578087637858, guid: fd78f8a486b25894a9f76fc8f9b7e388,
+    type: 2}
+  DefaultDamage: 3
+  DefaultSpeed: 10
+  LevelOneDamage: 0
+  LevelOneSpeed: 0
+  LevelTwoDamage: 0
+  LevelTwoSpeed: 0
+  rootTransform: {fileID: 4486547115157416}
+  rootRigidbody: {fileID: 0}
 --- !u!114 &114435792819773486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e1be90e38feb0458fc8f608fd2082c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
 --- !u!114 &114452923100789118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -285,38 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6950d21c17703ea4abb6106359844fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorImage: {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
---- !u!114 &114741612490640354
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1383133732660730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2928083fafd60e34d90daf0a908d0f04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1968578087637858, guid: fd78f8a486b25894a9f76fc8f9b7e388,
-    type: 2}
-  LevelOneDamage: 5
-  LevelOneSpeed: 8
-  LevelTwoDamage: 25
-  LevelTwoSpeed: 12
-  rootTransform: {fileID: 4486547115157416}
-  rootRigidbody: {fileID: 0}
---- !u!114 &114799931741688630
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1516534468231056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51045a74d281224db7edfd222d7d1ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioClip: []
+  cursorImage: {fileID: 2800000, guid: ba321b82913a6bf429d6c40726acf091, type: 3}
 --- !u!114 &114840065473725676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b5e7172c3527744a77f16a44a7e1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSoggy: 0
 --- !u!114 &114845532641004976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -340,14 +260,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canShoot: 1
-  RateOfFire: 0.2
+  RateOfFire: 0.001
+  maxAmmo: 50
+  ammoPerShot: 1
   aimDirectionTEST: {x: 1, y: 1}
-  currentAffinity: 1
-  affinityPower: 2
-  HARDBEHAVIOUR: {fileID: 114741612490640354}
-  SOFTBEHAVIOUR: {fileID: 114211105967556802}
+  NeutralFireBehaviour: {fileID: 114384637929755790}
   playerTransformInchargeOfAim: 1
-  inheritPlayerVelocity: 0
 --- !u!120 &120365707803087166
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -361,7 +279,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7756e2c7d726c194bb9d8918cf7dd27c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -391,13 +309,13 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 1
+        value: 0.19834709
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
+      m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}

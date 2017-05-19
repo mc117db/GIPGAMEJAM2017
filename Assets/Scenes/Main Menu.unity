@@ -376,8 +376,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel1: {fileID: 21300000, guid: 437234950aa7dec42ac61060bdcf919f, type: 3}
-  panel2: {fileID: 21300000, guid: c41dc43a70a3a694dbbe7c5e185a2880, type: 3}
-  panel3: {fileID: 21300000, guid: a93a556317fb31344a78ce8aec687d8a, type: 3}
+  panel2: {fileID: 21300000, guid: a93a556317fb31344a78ce8aec687d8a, type: 3}
+  panel3: {fileID: 21300000, guid: c41dc43a70a3a694dbbe7c5e185a2880, type: 3}
   tutorialScreen: {fileID: 21300000, guid: a2729d0407c604b4d9625cc39dec35fa, type: 3}
   title: {fileID: 789862880}
 --- !u!61 &374877201

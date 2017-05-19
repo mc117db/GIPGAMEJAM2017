@@ -12,7 +12,8 @@ public class Character : MonoBehaviour,IDamagable,IRecycle {
 	public delegate void OnValueChange(int value);
 	public event OnValueChange HealthChangeEvent;
 	public event OnValueChange TakeDamageEvent;
-
+    public delegate void OnEnemyHit();
+    public static event OnEnemyHit enemyHitEvent;
 	public int Health
 	{
 		get{return hp;}

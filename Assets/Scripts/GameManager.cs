@@ -66,6 +66,10 @@ public class GameManager : MonoBehaviour {
 			gameStarted = true;
 		if(Input.GetKeyDown(KeyCode.O)) 
 			enemyLeftInCurrentWave = 0;
+		if(Input.GetKeyDown(KeyCode.Z)) 
+			print("you get resource: " + Random.Range(1, 4));
+		if(Input.GetKeyDown(KeyCode.X)) 
+			print("you get %: " + Random.Range(1, 101) + "%");
         // =====================================================================================
 		if (gameStarted && enemyLeftInCurrentWave <= 0) {
             if(!isSpawningCountdown)

@@ -75,7 +75,7 @@ public class FireController : MonoBehaviour,IToggleFire,IAddAmmo {
             //	SOFTBEHAVIOUR.TogglePlayerInchargeOfAim (true);
             NeutralFireBehaviour.TogglePlayerInchargeOfAim(true);
         }
-        CurrentAmmo = maxAmmo;
+       // CurrentAmmo = maxAmmo;
         //if (inheritPlayerVelocity) {
         //	HARDBEHAVIOUR.ToggleInheritMovemement (true);
         //	SOFTBEHAVIOUR.ToggleInheritMovemement (true);
