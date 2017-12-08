@@ -61,7 +61,9 @@ public class GameManager : MonoBehaviour {
     }
 
 	void Update () {
-		// for debugging========================================================================
+        // for debugging========================================================================
+        Vector3 tryy = Input.mousePosition;
+        print(tryy);
 		if(Input.GetKeyDown(KeyCode.P)) 
 			gameStarted = true;
 		if(Input.GetKeyDown(KeyCode.O)) 
